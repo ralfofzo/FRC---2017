@@ -2,6 +2,9 @@
 #include <memory>
 #include <string>
 
+#include <HumanInterfaceDevices/IRJoystick.h>
+#include <RobotDrive/IRRobotDrive.h>
+
 #include <Joystick.h>
 #include <SampleRobot.h>
 #include <SmartDashboard/SendableChooser.h>
@@ -22,8 +25,9 @@
  * instead if you're new.
  */
 class Robot: public frc::SampleRobot {
-	frc::RobotDrive myRobot { 0, 1 }; // robot drive system
-	frc::Joystick stick { 0 }; // only joystick
+	IR::IRRobotDrive 	myDrive {0, 1, 2, 3};
+	IR::IRJoystick 		joystick {0}; // only joystick
+
 	frc::SendableChooser<std::string> chooser;
 	const std::string autoNameDefault = "Default";
 	const std::string autoNameCustom = "My Auto";
@@ -31,7 +35,7 @@ class Robot: public frc::SampleRobot {
 public:
 	Robot() {
 		//Note SmartDashboard is not initialized here, wait until RobotInit to make SmartDashboard calls
-		myRobot.SetExpiration(0.1);
+//		myRobot.SetExpiration(0.1);
 	}
 
 	void RobotInit() {
@@ -56,31 +60,15 @@ public:
 		// std::string autoSelected = frc::SmartDashboard::GetString("Auto Selector", autoNameDefault);
 		std::cout << "Auto selected: " << autoSelected << std::endl;
 
-		if (autoSelected == autoNameCustom) {
-			// Custom Auto goes here
-			std::cout << "Running custom Autonomous" << std::endl;
-			myRobot.SetSafetyEnabled(false);
-			myRobot.Drive(-0.5, 1.0); // spin at half speed
-			frc::Wait(2.0);                // for 2 seconds
-			myRobot.Drive(0.0, 0.0);  // stop robot
-		} else {
-			// Default Auto goes here
-			std::cout << "Running default Autonomous" << std::endl;
-			myRobot.SetSafetyEnabled(false);
-			myRobot.Drive(-0.5, 0.0); // drive forwards half speed
-			frc::Wait(2.0);                // for 2 seconds
-			myRobot.Drive(0.0, 0.0);  // stop robot
-		}
+
 	}
 
 	/*
 	 * Runs the motors with arcade steering.
 	 */
 	void OperatorControl() override {
-		myRobot.SetSafetyEnabled(true);
 		while (IsOperatorControl() && IsEnabled()) {
-			// drive with arcade style (use right stick)
-			myRobot.ArcadeDrive(stick);
+			myDrive.ArcadeDrive(joystick, true); // drive with arcade style (use right stick), boolean true if using deadZone
 
 			// wait for a motor update time
 			frc::Wait(0.005);
