@@ -15,6 +15,8 @@
 #include <RobotDrive.h>
 #include <Timer.h>
 
+#include "../drivers/imu/ADIS16448_IMU.h"
+
 class Robot: public frc::SampleRobot {
 	IR::IRRobotDrive 	myDrive	 {0, 1, 2, 3, IR::Mecanum};
 	IR::IRJoystick 		joystick {0}; // only joystick
@@ -23,10 +25,11 @@ class Robot: public frc::SampleRobot {
 	const std::string autoNameDefault = "Default";
 	const std::string autoNameCustom = "My Auto";
 
+	ADIS16448_IMU *imu;
+
 public:
 	Robot() {
-		//Note SmartDashboard is not initialized here, wait until RobotInit to make SmartDashboard calls
-//		myRobot.SetExpiration(0.1);
+		imu = new ADIS16448_IMU;
 	}
 
 	void RobotInit() {
@@ -59,6 +62,8 @@ public:
 	 */
 	void OperatorControl() override {
 		while (IsOperatorControl() && IsEnabled()) {
+			SmartDashboard::PutData("IMU", imu);
+
 			myDrive.ArcadeDrive(joystick, true); // drive with arcade style (use right stick), boolean true if using deadZone
 
 			// wait for a motor update time
