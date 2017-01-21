@@ -15,7 +15,7 @@
 #include <RobotDrive.h>
 #include <Timer.h>
 
-#include "../drivers/imu/ADIS16448_IMU.h"
+#include <../drivers/imu/ADIS16448_IMU.h>
 
 class Robot: public frc::SampleRobot {
 	IR::IRRobotDrive 	myDrive	 {0, 1, 2, 3, IR::Mecanum};
