@@ -61,6 +61,9 @@ public:
 	 * Runs the motors with arcade steering.
 	 */
 	void OperatorControl() override {
+
+		bool button4Pressed = false;
+
 		while (IsOperatorControl() && IsEnabled()) {
 			SmartDashboard::PutData("IMU", imu);
 
