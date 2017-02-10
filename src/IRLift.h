@@ -1,13 +1,20 @@
 /*
  * IRLift.h
- *
- *  Created on: 2 feb. 2017
- *      Author: Dylan Vos
- */
+*/
 
 #pragma once
 
-class IRLift {
-	IRLift();
-};
+#include <VictorSP.h>
 
+class IRLift {
+public:
+	IRLift.h::IRLift(uint32_t Lift1Channel, uint32_t Lift2Channel);
+
+	void Lift();
+	void StopLift();
+	
+
+protected:
+	frc::VictorSP Lift1, Lift2;
+
+};
