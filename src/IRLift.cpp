@@ -4,9 +4,9 @@
 
 #include <IRLift.h>
 
-IRLift.h::IRLift(uint32_t Lift1Channel, uint32_t Lift2Channel) :
+IRLift::IRLift(uint32_t Lift1Channel, uint32_t Lift2Channel) :
 	Lift1(Lift1Channel),
-	Lift2(Lift2Channel),
+	Lift2(Lift2Channel)
 {
 	
 }

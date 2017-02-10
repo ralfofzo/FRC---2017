@@ -8,7 +8,7 @@
 
 class IRLift {
 public:
-	IRLift.h::IRLift(uint32_t Lift1Channel, uint32_t Lift2Channel);
+	IRLift(uint32_t Lift1Channel, uint32_t Lift2Channel);
 
 	void Lift();
 	void StopLift();
