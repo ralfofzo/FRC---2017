@@ -1,13 +1,23 @@
 /*
  * IRLift.cpp
- *
- *  Created on: 2 feb. 2017
- *      Author: Dylan Vos
  */
 
 #include <IRLift.h>
 
-IRLift::IRLift() {
-	// TODO Auto-generated constructor stub
+IRLift.h::IRLift(uint32_t Lift1Channel, uint32_t Lift2Channel) :
+	Lift1(Lift1Channel),
+	Lift2(Lift2Channel),
+{
+}
 
+void IRLift::Lift()
+{
+	Lift1.Set(1);
+	Lift2.Set(1);
+}
+
+void IRLift::StopLift()
+{
+	Lift1.Set(0);
+	Lift2.Set(0);
 }
