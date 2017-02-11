@@ -21,3 +21,12 @@ Void IRArm::StartArm()
 	Arm.set(0);	
 	}
 
+Void IRArm::BackwardsArm()
+{
+
+	Arm.set(-1);
+	
+	
+}
+
+
