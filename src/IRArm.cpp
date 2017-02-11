@@ -7,8 +7,17 @@
 
 #include <IRArm.h>
 
-IRArm::IRArm() {
-	// TODO Auto-generated constructor stub
+IRArm::IRArm();
+	IRArm::IRArm(uint32_t ArmChannel) :
+	
+	Arm(ArmChannel)
+Void IRArm::StartArm()
+{
+	Arm.set(1);
 
 }
+	Void IRArm::StopArm()
+	{
+	Arm.set(0);	
+	}
 
