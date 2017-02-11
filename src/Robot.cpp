@@ -74,6 +74,7 @@ public:
 			myDrive.ArcadeDrive(joystick, true); // drive with arcade style (use right stick), boolean true if using deadZone
 			if(gamePad.GetRawButton(3)) irlift.Lift();
 			if(gamePad.GetRawButton(0)) iracuator.AcuatorIn();
+			if(gamePad.GetRawButton(2)) iracuator.AcuatorUit();
 
 
 			// wait for a motor update time
