@@ -7,7 +7,7 @@
 
 #include <IRArm.h>
 
-IRArm::IRArm();
+
 	IRArm::IRArm(uint32_t ArmChannel) :
 	
 	Arm(ArmChannel)
